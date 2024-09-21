@@ -12,24 +12,19 @@ import {
 import { MediaItem } from '@sharedTypes/DBTypes';
 import { LuTrash } from 'react-icons/lu';
 // import useMedia from mediastore mfe
-import { useMedia } from 'mediastore/apiHooks';
+import { useMediaContext  } from 'mediastore/contextHooks';
 
 const DeleteMedia = (props: {
   mediaItem: MediaItem
 }) => {
   const { mediaItem } = props;
 
-  const { deleteMedia } = useMedia();
+  const { deleteMediaItem } = useMediaContext();
 
   const deleteHandler = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        return;
-      }
-      const result = await deleteMedia(mediaItem._id, token);
-      alert(result.message);
-      // refreshMedia();
+      await deleteMediaItem(mediaItem._id);
+      alert('Media Deleted');
     } catch (e) {
       console.error('delete failed', (e as Error).message);
     }

@@ -88,10 +88,26 @@ type AuthContextType = {
 
 type MediaContextType = {
   mediaItems: MediaItem[] | null;
+  userMediaItems: MediaItem[] | null;
   singleMediaItem: MediaItem | null;
   setSingleMediaItemId: (id: string) => void;
-  refreshMedia: () => void;
-  refreshSingleMedia: () => void;
+  updateMediaItem: (
+    mediaItem: MediaItem,
+    inputs: Pick<MediaItem, 'title' | 'description'> & {
+      tags: string;
+    },
+  ) => void;
+  postMediaItem: (
+    file: File,
+    inputs: {
+      title: string;
+      description: string;
+      tag: string;
+      stream_url: string;
+    },
+    mediaType: 'video' | 'live_stream',
+  ) => void;
+  deleteMediaItem: (id: string) => void;
 };
 
 export type {

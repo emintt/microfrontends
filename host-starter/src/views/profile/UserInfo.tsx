@@ -1,33 +1,18 @@
 import { LuLogOut, LuMail } from 'react-icons/lu';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { useEffect, useState } from 'react';
-import { MediaItem } from '@sharedTypes/DBTypes';
 import ProfileThumbnail from './ProfileThumbnail';
-// import useMedia from mediastore mfe
-import { useMedia } from 'mediastore/apiHooks';
-
 // import useUserContext from mediastore mfe
-import { useUserContext } from 'mediastore/contextHooks';
+import { useMediaContext, useUserContext } from 'mediastore/contextHooks';
+import { MediaItem } from '@sharedTypes/DBTypes';
 
 
 const UserInfo = () => {
-  const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
-  // const [refresh, setRefresh] = useState(false);
-  const { user, handleLogout, refreshMediaItems } = useUserContext();
-  const { getMediaByUser } = useMedia(refreshMediaItems);
 
-  useEffect(() => {
-    if (user) {
-      getMediaByUser(user.user_id).then((data: MediaItem[]) => {
-        setMediaItems(data);
-      });
-    }
-  }, [user, getMediaByUser]);
+  const { user, handleLogout } = useUserContext();
+  const { userMediaItems } = useMediaContext();
 
-  // const refreshMedia = () => {
-  //   setRefresh(!refresh);
-  // };
+  console.log('userMediaItems', userMediaItems);
 
   return (
     <>
@@ -61,12 +46,12 @@ const UserInfo = () => {
             <div className="grid gap-2">
               <h2 className="text-lg font-semibold">Videos</h2>
               <div className="flex flex-wrap">
-                {mediaItems.map((mediaItem) => (
-                  <ProfileThumbnail
-                    key={mediaItem._id}
-                    mediaItem={mediaItem}
-                    // refreshMedia={refreshMedia}
-                  />
+                {userMediaItems &&
+                  userMediaItems.map((mediaItem: MediaItem) => (
+                    <ProfileThumbnail
+                      key={mediaItem._id}
+                      mediaItem={mediaItem}
+                    />
                 ))}
               </div>
             </div>

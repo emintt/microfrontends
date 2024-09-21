@@ -5,17 +5,17 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '@/hooks/formHooks';
-import { UploadResponse } from '@sharedTypes/MessageTypes';
-// import useFile and useMedia from mediastore mfe
-import { useFile, useMedia } from 'mediastore/apiHooks';
+import { useMediaContext } from 'mediastore/contextHooks';
+
+//// import useFile and useMedia from mediastore mfe
 
 
 const MediaForm = () => {
   const [mediaType, setMediaType] = useState<'video' | 'live_stream'>('video');
   const [file, setFile] = useState<File | null>(null);
 
-  const { postFile } = useFile();
-  const { postMedia } = useMedia();
+  const { postMediaItem } = useMediaContext();
+
   const navigate = useNavigate();
 
   const initValues = {
@@ -27,39 +27,15 @@ const MediaForm = () => {
 
   const doUpload = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (!token || (!file && !inputs.stream_url)) {
+      if (!file) {
         return;
       }
-
-      // if mediaType is video, post the file else post the stream_url
-      let fileResult: UploadResponse = {
-        message: '',
-        data: {
-          filename: inputs.stream_url,
-          media_type: 'application/dash+xml',
-          filesize: 0,
-        },
-      };
-      if (mediaType === 'video' && file) {
-        fileResult = await postFile(file, token);
-      }
-
-      // mediainputs with tags as an array
-      const mediaInputs = {
-        title: inputs.title,
-        description: inputs.description,
-        type: mediaType,
-        tags: inputs.tag.split(',').map((tag) => tag.trim()),
-        screenshots: fileResult.data.screenshots || [],
-      };
-
-      const mediaResult = await postMedia(fileResult, mediaInputs, token);
-      alert(mediaResult.message);
+      await postMediaItem(file, inputs, mediaType);
+      
       // redirect to Profile
       navigate('/profile');
-    } catch (e) {
-      console.log((e as Error).message);
+    } catch (error) {
+      console.error('delete failed', (error as Error).message);
     }
   };
 

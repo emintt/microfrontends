@@ -10,15 +10,15 @@ import {
 } from '@sharedTypes/MessageTypes';
 import { useCallback } from 'react';
 
-const useMedia = (refreshMedia?: boolean, refreshSinglemedia?: boolean) => {
+const useMedia = (
+  refreshMedia: boolean,
+  refreshSinglemedia: boolean,
+  refreshUserMedia: boolean,
+) => {
   const getMedia = useCallback(async () => {
-    try {
-      return await fetchData<MediaItem[]>(
-        import.meta.env.VITE_MEDIA_API + '/media',
-      );
-    } catch (error) {
-      console.error('getMedia failed', error);
-    }
+    return await fetchData<MediaItem[]>(
+      import.meta.env.VITE_MEDIA_API + '/media',
+    );
   }, [refreshMedia]);
 
   const postMedia = (
@@ -69,11 +69,14 @@ const useMedia = (refreshMedia?: boolean, refreshSinglemedia?: boolean) => {
     [refreshSinglemedia],
   );
 
-  const getMediaByUser = useCallback(async (id: number) => {
-    return await fetchData<MediaItem[]>(
-      import.meta.env.VITE_MEDIA_API + '/media/user/' + id,
-    );
-  }, [refreshMedia]);
+  const getMediaByUser = useCallback(
+    async (id: number) => {
+      return await fetchData<MediaItem[]>(
+        import.meta.env.VITE_MEDIA_API + '/media/user/' + id,
+      );
+    },
+    [refreshUserMedia],
+  );
 
   const deleteMedia = async (id: string, token: string) => {
     const options = {
