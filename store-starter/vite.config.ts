@@ -20,7 +20,6 @@ export default defineConfig({
         './MediaContext': './src/contexts/MediaContext',
         './UserContext': './src/contexts/UserContext',
         './apiHooks': './src/hooks/apiHooks',
-        './formHooks': './src/hooks/formHooks',
       },
       shared: ['react', 'react-dom', 'react-router-dom'], // katso dependencies ehkä
     }),

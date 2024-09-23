@@ -1,8 +1,8 @@
 import { MediaItem } from '@sharedTypes/DBTypes';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader } from '../../components/ui/card';
-// import DeleteMedia from './DeleteMedia';
-// import ModifyMedia from './ModifyMedia';
+import DeleteMedia from './DeleteMedia';
+import ModifyMedia from './ModifyMedia';
 // import ThumbCarousel from front_and_sidebar mfe
 import ThumbCarousel from 'front_and_sidebar/ThumbCarousel';
 
@@ -36,8 +36,8 @@ const ProfileThumbnail = (props: {
             </div>
           </section>
           <section className="w-1/3 flex justify-around">
-            {/* <DeleteMedia mediaItem={mediaItem} />
-            <ModifyMedia mediaItem={mediaItem} /> */}
+            <DeleteMedia mediaItem={mediaItem} />
+            <ModifyMedia mediaItem={mediaItem} />
           </section>
         </div>
       </CardContent>

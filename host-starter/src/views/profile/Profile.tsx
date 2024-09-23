@@ -1,17 +1,21 @@
-import UserInfo from './UserInfo';
-import FormSwitch from './FormSwitch';
-// Import the useUserContex hook from the mediastore mfe
-import { useUserContext } from 'mediastore/contextHooks';
+import RemoteProfile from 'profile/Profile';
+import { useUserContext, useMediaContext } from 'mediastore/contextHooks';
+import { MediaItem, UserWithNoPassword } from '@sharedTypes/DBTypes';
+
 
 const Profile = () => {
-  const { user } = useUserContext();
-  console.log(user);
-
+  const { user, handleLogout } = useUserContext();
+  const { userMediaItems } = useMediaContext();
   return (
     <main className="p-4">
-      <div className="w-full max-w-3xl mx-auto">
-        {user ? <UserInfo /> : <FormSwitch />}
-      </div>
+    <div className="w-full max-w-3xl mx-auto">
+      <RemoteProfile 
+        user={user as unknown as UserWithNoPassword}
+        userMediaItems={userMediaItems as unknown as MediaItem[]}
+        handleLogout={handleLogout as unknown as () => void}
+      />
+    
+    </div>
     </main>
   );
 };
