@@ -1,0 +1,91 @@
+[
+  {
+    "_id": "media1",
+    "title": "Vite Federation Tutorial",
+    "description": "A comprehensive guide to Vite federation with microfrontends.",
+    "type": "video",
+    "url": "https://example.com/videos/vite-federation-tutorial",
+    "tags": ["vite", "microfrontend", "tutorial"],
+    "metadata": {
+      "duration": "10:45",
+      "resolution": "1080p",
+      "size": "150MB",
+      "format": "mp4"
+    },
+    "uploadedAt": "2023-09-23T12:30:00Z",
+    "comments": [
+      {
+        "_id": "comment1",
+        "text": "This was really helpful, thanks!",
+        "author": {
+          "_id": "user1",
+          "username": "tech_guru",
+          "avatarUrl": "https://example.com/avatars/user1.png"
+        },
+        "postedAt": "2023-09-24T10:00:00Z"
+      }
+    ],
+    "upvotes": [
+      {
+        "_id": "user2",
+        "username": "dev_master"
+      }
+    ],
+    "downvotes": [],
+    "owner": {
+      "_id": "user1",
+      "username": "tech_guru",
+      "avatarUrl": "https://example.com/avatars/user1.png"
+    },
+    "screenshots": [
+      "https://example.com/screenshots/media1_1.png",
+      "https://example.com/screenshots/media1_2.png"
+    ]
+  },
+  {
+    "_id": "media2",
+    "title": "Live Coding Session: Building a Microfrontend",
+    "description": "Watch me build a microfrontend in real-time using Vite.",
+    "type": "live_stream",
+    "url": "https://example.com/live/microfrontend-session",
+    "tags": ["live_stream", "coding", "microfrontend"],
+    "metadata": {
+      "duration": "02:00:00",
+      "resolution": "720p",
+      "size": "N/A",
+      "format": "live"
+    },
+    "uploadedAt": "2023-09-22T15:00:00Z",
+    "comments": [
+      {
+        "_id": "comment2",
+        "text": "Excited for this!",
+        "author": {
+          "_id": "user3",
+          "username": "live_coder",
+          "avatarUrl": "https://example.com/avatars/user3.png"
+        },
+        "postedAt": "2023-09-22T14:45:00Z"
+      }
+    ],
+    "upvotes": [
+      {
+        "_id": "user3",
+        "username": "live_coder"
+      },
+      {
+        "_id": "user4",
+        "username": "frontend_dev"
+      }
+    ],
+    "downvotes": [],
+    "owner": {
+      "_id": "user2",
+      "username": "dev_master",
+      "avatarUrl": "https://example.com/avatars/user2.png"
+    },
+    "screenshots": [
+      "https://example.com/screenshots/media2_1.png"
+    ]
+  }
+]
