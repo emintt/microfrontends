@@ -19,7 +19,8 @@ export default defineConfig({
         './contextHooks': './src/hooks/contextHooks',
         './MediaContext': './src/contexts/MediaContext',
         './UserContext': './src/contexts/UserContext',
-        './apiHooks': './src/hooks/apiHooks'
+        './apiHooks': './src/hooks/apiHooks',
+        './formHooks': './src/hooks/formHooks',
       },
       shared: ['react', 'react-dom', 'react-router-dom'], // katso dependencies ehkä
     }),

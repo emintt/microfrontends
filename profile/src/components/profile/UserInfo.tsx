@@ -1,16 +1,19 @@
 import { LuLogOut, LuMail } from 'react-icons/lu';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-// import ProfileThumbnail from './ProfileThumbnail';
+import ProfileThumbnail from './ProfileThumbnail';
 // import useUserContext from mediastore mfe
 // import { useMediaContext, useUserContext } from 'mediastore/contextHooks';
 import { MediaItem, UserWithNoPassword } from '@sharedTypes/DBTypes';
 
+const UserInfo = ( 
+  props: { 
+    user: UserWithNoPassword, 
+    userMediaItems: MediaItem[], 
+    handleLogout: () => void }
+  ) => {
 
-
-const UserInfo = ( props: { user: UserWithNoPassword, userMediaItems: MediaItem[]}) => {
-
-  const { user, userMediaItems } = props;
+  const { user, userMediaItems, handleLogout } = props;
   // const { user, handleLogout } = useUserContext();
 
   console.log('userMediaItems', userMediaItems);
@@ -27,8 +30,7 @@ const UserInfo = ( props: { user: UserWithNoPassword, userMediaItems: MediaItem[
             <div className="grid gap-1 flex-1">
               <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold">{user.username}</h1>
-                {/* <Button onClick={handleLogout} className="rounded-full"> */}
-                <Button onClick={() => console.log('click')} className="rounded-full">
+                <Button onClick={handleLogout} className="rounded-full">
                   Logout &nbsp;
                   <LuLogOut className="h-5 w-5" />
                 </Button>
@@ -50,15 +52,10 @@ const UserInfo = ( props: { user: UserWithNoPassword, userMediaItems: MediaItem[
               <div className="flex flex-wrap">
                 {userMediaItems &&
                   userMediaItems.map((mediaItem: MediaItem) => (
-                    <div
+                    <ProfileThumbnail
                       key={mediaItem._id}
-                    >
-                      {mediaItem._id}
-                    </div>
-                    // <ProfileThumbnail
-                    //   key={mediaItem._id}
-                    //   mediaItem={mediaItem}
-                    // />
+                      mediaItem={mediaItem}
+                    />
                 ))}
               </div>
             </div>
