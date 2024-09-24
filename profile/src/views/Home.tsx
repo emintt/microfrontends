@@ -5,13 +5,12 @@ import { useUserContext, useMediaContext } from 'mediastore/contextHooks';
 
 
 const Home = () => {
-  const { user, handleLogout } = useUserContext();
+  const { user } = useUserContext();
   const { userMediaItems } = useMediaContext();
   return (
     <Profile 
       user={user}
       userMediaItems={userMediaItems}
-      handleLogout={handleLogout}
     />
   );
 };

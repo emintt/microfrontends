@@ -3,18 +3,18 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import ProfileThumbnail from './ProfileThumbnail';
 // import useUserContext from mediastore mfe
-// import { useMediaContext, useUserContext } from 'mediastore/contextHooks';
+import { useUserContext } from 'mediastore/contextHooks';
 import { MediaItem, UserWithNoPassword } from '@sharedTypes/DBTypes';
 
 const UserInfo = ( 
   props: { 
     user: UserWithNoPassword, 
     userMediaItems: MediaItem[], 
-    handleLogout: () => void }
+  }
   ) => {
 
-  const { user, userMediaItems, handleLogout } = props;
-  // const { user, handleLogout } = useUserContext();
+  const { user, userMediaItems } = props;
+  const { handleLogout } = useUserContext();
 
   console.log('userMediaItems', userMediaItems);
 
