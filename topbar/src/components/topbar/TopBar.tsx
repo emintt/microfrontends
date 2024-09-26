@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
 import {
   Tooltip,
   TooltipProvider,
   TooltipTrigger,
   TooltipContent,
-} from './ui/tooltip';
+} from '../ui/tooltip';
 import { LuBell, LuSearch, LuUpload, LuUser } from 'react-icons/lu';
-// import useUserContext from mediastore mfe
 import { useUserContext } from 'mediastore/contextHooks';
 
 const TopBar = () => {
@@ -18,7 +17,7 @@ const TopBar = () => {
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-4">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.jpg" alt="logo" width="200" height="50" />
+            <img src="./logo.jpg" alt="logo" width="200" height="50" />
             <span className="sr-only">Acme Inc</span>
           </Link>
         </div>

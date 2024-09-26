@@ -1,17 +1,22 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Layout from './views/Layout';
+// import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+// import Layout from './views/Layout';
 import Home from './views/Home';
+import { BrowserRouter as Router } from 'react-router-dom';
 import SidebarTest from './views/SidebarTest';
 
 const App = () => {
   return (
+    // <Router>
+    //   <Routes>
+    //     <Route element={<Layout />}>
+    //       <Route path="/" element={<Home />} />
+    //       <Route path="/sidebar" element={<SidebarTest />} />
+    //     </Route>
+    //   </Routes>
+    // </Router>
     <Router>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/sidebar" element={<SidebarTest />} />
-        </Route>
-      </Routes>
+      <Home />
+      <SidebarTest />
     </Router>
   );
 };

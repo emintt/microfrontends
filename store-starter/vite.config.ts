@@ -5,6 +5,7 @@ import federation from '@originjs/vite-plugin-federation';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: 'https://users.metropolia.fi/~thitng/microfrontends/store-starter/',
   plugins: [
     react(),
     // Add the federation configuration
@@ -36,6 +37,6 @@ export default defineConfig({
     },
   },
   build: {
-    target: 'esnext',
+    target: 'esnext', minify: false, cssCodeSplit: false 
   },
 });

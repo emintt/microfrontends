@@ -13,7 +13,7 @@ import Profile from './views/profile/Profile';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/~thitng/microfrontends/host-starter">
       <UserProvider>
         <MediaProvider>
           <Routes>

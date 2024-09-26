@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import federation from '@originjs/vite-plugin-federation';
 
 export default defineConfig({
+  base: 'https://users.metropolia.fi/~thitng/microfrontends/juutube-front-and-sidebar-starter/',
   plugins: [
     react(),
     // federation config, name: front_and_sidebar,
@@ -32,6 +33,6 @@ export default defineConfig({
     },
   },
   build: {
-    target: 'esnext',
+    target: 'esnext', minify: false, cssCodeSplit: false 
   },
 });

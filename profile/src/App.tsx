@@ -1,19 +1,15 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Layout from './views/Layout';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Home from './views/Home';
 import { UserProvider } from 'mediastore/UserContext';
 import { MediaProvider } from 'mediastore/MediaContext';
+// import Layout from './views/Layout';
 
 const App = () => {
   return (
     <Router>
       <UserProvider>
         <MediaProvider>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Home />} />
-            </Route>
-          </Routes>
+          <Home />
         </MediaProvider>
       </UserProvider>
     </Router>

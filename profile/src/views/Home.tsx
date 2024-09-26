@@ -7,8 +7,10 @@ import { useUserContext, useMediaContext } from 'mediastore/contextHooks';
 const Home = () => {
   const { user } = useUserContext();
   const { userMediaItems } = useMediaContext();
+  console.log(user);
+  console.log(userMediaItems);
   return (
-    <Profile 
+    <Profile
       user={user}
       userMediaItems={userMediaItems}
     />
