@@ -3,31 +3,38 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import federation from '@originjs/vite-plugin-federation';
 
-
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'https://users.metropolia.fi/~thitng/microfrontends/host-starter/',
+  base: 'https://users.metropolia.fi/~thitng/microfrontends/player/',
   plugins: [
     react(),
-    // federation config
     federation({
-      name: 'juutube',
+      name: 'player',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Player': './src/components/player/VideoPlayer',
+      },
       remotes: {
+        // mediastore: 'http://localhost:3001/assets/remoteEntry.js',
         mediastore: 'https://users.metropolia.fi/~thitng/microfrontends/store-starter/assets/remoteEntry.js',
-        front_and_sidebar: 'https://users.metropolia.fi/~thitng/microfrontends/juutube-front-and-sidebar-starter/assets/remoteEntry.js',
-        profile: 'https://users.metropolia.fi/~thitng/microfrontends/profile/assets/remoteEntry.js',
-        topbar: 'https://users.metropolia.fi/~thitng/microfrontends/topbar/assets/remoteEntry.js',
-        player: 'https://users.metropolia.fi/~thitng/microfrontends/player/assets/remoteEntry.js',
+
       },
       shared: ['react', 'react-dom', 'react-router-dom'],
     }),
   ],
+  server: {
+    port: 3011, // Set the desired port here
+  },
+  preview: {
+    port: 3011, // Set the desired port here
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
     },
   },
   build: {
+    // target: ['chrome90', 'firefox89', 'safari15', 'es2022']
     target: 'esnext', minify: false, cssCodeSplit: false 
-  },
+  },  
 });
