@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: 'https://users.metropolia.fi/~thitng/microfrontends/topbar/',
+  // base: 'https://users.metropolia.fi/~thitng/microfrontends/topbar/',
   plugins: [
     react(),
     federation({
@@ -14,8 +14,8 @@ export default defineConfig({
         './TopBar': './src/components/topbar/TopBar',
       },
       remotes: {
-        // mediastore: 'http://localhost:3001/assets/remoteEntry.js',
-        mediastore: 'https://users.metropolia.fi/~thitng/microfrontends/store-starter/assets/remoteEntry.js',
+        mediastore: 'http://localhost:3001/assets/remoteEntry.js',
+        // mediastore: 'https://users.metropolia.fi/~thitng/microfrontends/store-starter/assets/remoteEntry.js',
 
       },
       shared: ['react', 'react-dom', 'react-router-dom'],
